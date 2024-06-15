@@ -1,0 +1,30 @@
+application:
+  version: 1.0.0
+server:
+  port: 8080
+  error:
+    path: /error
+logging:
+  level:
+    # root: info [[ default logging level ]]
+    com.goodpractices.demo: info
+
+spring:
+  application:
+    name: Good Practices
+  datasource:
+    url: jdbc:h2:mem:goodpractices
+    username: G
+    # password: Practices
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2

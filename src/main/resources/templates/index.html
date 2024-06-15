@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <script type="text/javascript" th:src="@{/js/script.js}" defer="defer"></script>
+</head>
+<body>
+    <th:block th:insert="~{fragments/some-fragments.html :: main-header}" />
+    <h1>Index Page</h1>
+    <form th:action="@{/process-view}" method="post">
+        <ul>
+            <li th:each="element : ${list}" th:text="${element}"></li>
+        </ul>
+
+        <input type="hidden" name="show" id="show"/>
+
+        <input th:if="${show}" type="submit" value="Dont Show header" onclick="setShow(false)">
+        <input th:unless="${show}" type="submit" value="Show Header" onclick="setShow(true)">
+
+        <h2 th:if="${show}">This is a conditional header</h2>
+    </form>
+    <th:block th:insert="~{fragments/some-fragments.html :: main-footer}" />
+</body>
+</html>
